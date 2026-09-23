@@ -1,0 +1,4 @@
+pymupdf
+pdfplumber
+fuzzywuzzy
+python-Levenshtein
