@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PROTOTIPE Throwaway - Wireframe Sistem Rekrutmen</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: Arial, Helvetica, sans-serif; background: #e8e8e8; color: #333; padding: 16px; }
+  header { background: #d0d0d0; border: 2px solid #999; padding: 12px; margin-bottom: 12px; }
+  header h1 { font-size: 18px; font-weight: bold; }
+  header p { font-size: 12px; color: #555; }
+  nav { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
+  nav button { background: #fff; border: 2px solid #888; padding: 8px 12px; cursor: pointer; font-size: 13px; }
+  nav button.active { background: #555; color: #fff; border-color: #555; }
+  .page { display: none; position: relative; background: #f4f4f4; border: 2px dashed #999; padding: 48px 20px 20px 20px; min-height: 480px; }
+  .page.active { display: block; }
+  .corner-label { position: absolute; top: 10px; right: 10px; background: #555; color: #fff; font-size: 11px; padding: 4px 8px; letter-spacing: 1px; }
+  .wire-box { background: #fff; border: 2px solid #aaa; padding: 16px; margin-bottom: 12px; }
+  .wire-box h2 { font-size: 16px; margin-bottom: 10px; border-bottom: 2px solid #ccc; padding-bottom: 6px; }
+  .wire-box h3 { font-size: 14px; margin: 10px 0 6px 0; }
+  .placeholder { background: #ddd; border: 1px dashed #999; height: 20px; margin: 6px 0; }
+  .cards { display: flex; gap: 12px; flex-wrap: wrap; }
+  .card { flex: 1; min-width: 140px; background: #fff; border: 2px solid #888; padding: 12px; text-align: center; }
+  .card .num { font-size: 28px; font-weight: bold; }
+  .card .lbl { font-size: 12px; color: #666; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 8px; }
+  th, td { border: 1px solid #999; padding: 8px; text-align: left; }
+  th { background: #ccc; }
+  td .pill { display: inline-block; border: 1px solid #888; background: #e0e0e0; padding: 2px 8px; font-size: 12px; }
+  input[type="text"], input[type="password"], input[type="number"] { width: 100%; border: 2px solid #999; background: #fff; padding: 8px; font-size: 14px; margin: 4px 0 10px 0; }
+  label { font-size: 13px; font-weight: bold; }
+  .btn { display: inline-block; border: 2px solid #555; background: #666; color: #fff; padding: 8px 16px; cursor: pointer; font-size: 14px; margin-top: 8px; }
+  .btn.secondary { background: #fff; color: #333; }
+  .btn.small { font-size: 12px; padding: 4px 10px; }
+  .tag-list { display: flex; gap: 6px; flex-wrap: wrap; margin: 6px 0; }
+  .tag { background: #ddd; border: 1px solid #888; padding: 4px 8px; font-size: 13px; }
+  .tag button { margin-left: 6px; cursor: pointer; border: none; background: transparent; font-weight: bold; }
+  .note { font-size: 12px; color: #666; font-style: italic; margin-top: 8px; }
+  .flow { display: flex; align-items: center; gap: 8px; margin: 12px 0; flex-wrap: wrap; }
+  .flow .step { border: 2px solid #888; background: #fff; padding: 8px 12px; font-size: 13px; }
+  .flow .step.done { background: #bbb; font-weight: bold; }
+  .flow .arrow { font-size: 18px; }
+  .draft { border: 2px dashed #666; background: #fafafa; padding: 12px; margin-top: 12px; }
+  .success { background: #d5d5d5; border: 2px solid #777; padding: 10px; margin-top: 10px; font-size: 13px; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>[ ] Sistem Rekrutmen — Throwaway Wireframe</h1>
+  <p>Mockup statis grayscale untuk konfirmasi layout &amp; alur. Data dummy. Tanpa backend.</p>
+  <nav>
+    <button data-page="p-login" class="active">1. Login</button>
+    <button data-page="p-supervisor">2. Dashboard Supervisor</button>
+    <button data-page="p-mpr">3. Form Pengajuan MPR</button>
+    <button data-page="p-hrd">4. Dashboard HRD</button>
+    <button data-page="p-approval">5. Alur Persetujuan MPR</button>
+  </nav>
+</header>
+
+<!-- 1. LOGIN -->
+<section id="p-login" class="page active">
+  <div class="corner-label">PROTOTIPE - WIREFRAME</div>
+  <div class="wire-box" style="max-width:420px;margin:0 auto;">
+    <h2>[ ] Login</h2>
+    <label>Username</label>
+    <input type="text" id="login-user" placeholder="contoh: supervisor01">
+    <div class="placeholder"></div>
+    <label>Password</label>
+    <input type="password" id="login-pass" placeholder="********">
+    <div class="placeholder"></div>
+    <button class="btn" id="btn-login">Masuk (dummy)</button>
+    <p class="note">Wireframe: tombol hanya pindah tab, tidak ada autentikasi.</p>
+    <div id="login-msg"></div>
+  </div>
+</section>
+
+<!-- 2. DASHBOARD SUPERVISOR -->
+<section id="p-supervisor" class="page">
+  <div class="corner-label">PROTOTIPE - WIREFRAME</div>
+  <div class="wire-box">
+    <h2>[ ] Dashboard Supervisor</h2>
+    <div class="cards">
+      <div class="card"><div class="num">3</div><div class="lbl">Pending</div></div>
+      <div class="card"><div class="num">5</div><div class="lbl">Approved</div></div>
+      <div class="card"><div class="num">1</div><div class="lbl">Rejected</div></div>
+    </div>
+  </div>
+  <div class="wire-box">
+    <h3>[ ] Riwayat Pengajuan MPR (dummy)</h3>
+    <table>
+      <tr><th>ID</th><th>Posisi</th><th>Jumlah</th><th>Status</th></tr>
+      <tr><td>MPR-001</td><td>[ Backend Developer ]</td><td>2</td><td><span class="pill">Pending</span></td></tr>
+      <tr><td>MPR-002</td><td>[ Frontend Developer ]</td><td>1</td><td><span class="pill">Approved</span></td></tr>
+      <tr><td>MPR-003</td><td>[ Data Analyst ]</td><td>1</td><td><span class="pill">Rejected</span></td></tr>
+      <tr><td>MPR-004</td><td>[ QA Engineer ]</td><td>2</td><td><span class="pill">Pending</span></td></tr>
+    </table>
+    <p class="note">Wireframe: kotak abu-abu = placeholder tabel. Klik tab Form Pengajuan MPR untuk tambah data.</p>
+  </div>
+</section>
+
+<!-- 3. FORM MPR -->
+<section id="p-mpr" class="page">
+  <div class="corner-label">PROTOTIPE - WIREFRAME</div>
+  <div class="wire-box" style="max-width:560px;">
+    <h2>[ ] Form Pengajuan MPR</h2>
+    <label>Posisi *</label>
+    <input type="text" id="mpr-posisi" placeholder="contoh: Backend Developer">
+    <label>Jumlah Kebutuhan *</label>
+    <input type="text" id="mpr-jumlah" placeholder="contoh: 2">
+    <label>Technical Keywords (tag)</label>
+    <div style="display:flex;gap:6px;">
+      <input type="text" id="mpr-kw-input" placeholder="ketik keyword lalu Tambah">
+      <button class="btn small secondary" id="btn-kw-add" style="white-space:nowrap;">+ Tambah</button>
+    </div>
+    <div class="tag-list" id="kw-tags"></div>
+    <button class="btn" id="btn-mpr-ajukan">Ajukan</button>
+    <div id="mpr-msg"></div>
+    <p class="note">Wireframe: tag bisa ditambah/dihapus di layar saja. Tombol Ajukan hanya simulasi.</p>
+  </div>
+</section>
+
+<!-- 4. DASHBOARD HRD -->
+<section id="p-hrd" class="page">
+  <div class="corner-label">PROTOTIPE - WIREFRAME</div>
+  <div class="wire-box">
+    <h2>[ ] Dashboard HRD</h2>
+    <div class="cards">
+      <div class="card"><div class="num">4</div><div class="lbl">Lowongan Aktif</div></div>
+      <div class="card"><div class="num">38</div><div class="lbl">Pelamar Masuk</div></div>
+      <div class="card"><div class="num">25</div><div class="lbl">Sudah Diproses</div></div>
+    </div>
+  </div>
+  <div class="wire-box">
+    <h3>[ ] MPR Masuk (dummy)</h3>
+    <table>
+      <tr><th>ID</th><th>Posisi</th><th>Jumlah</th><th>Status</th><th>Aksi</th></tr>
+      <tr>
+        <td>MPR-001</td><td>[ Backend Developer ]</td><td>2</td>
+        <td><span class="pill" id="hrd-status-1">Pending</span></td>
+        <td>
+          <button class="btn small" data-approve="hrd-status-1">Setujui</button>
+          <button class="btn small secondary" data-reject="hrd-status-1">Tolak</button>
+        </td>
+      </tr>
+      <tr>
+        <td>MPR-004</td><td>[ QA Engineer ]</td><td>2</td>
+        <td><span class="pill" id="hrd-status-2">Pending</span></td>
+        <td>
+          <button class="btn small" data-approve="hrd-status-2">Setujui</button>
+          <button class="btn small secondary" data-reject="hrd-status-2">Tolak</button>
+        </td>
+      </tr>
+    </table>
+    <p class="note">Wireframe: Setujui/Tolak hanya mengubah label status di halaman ini.</p>
+  </div>
+</section>
+
+<!-- 5. ALUR PERSETUJUAN -->
+<section id="p-approval" class="page">
+  <div class="corner-label">PROTOTIPE - WIREFRAME</div>
+  <div class="wire-box">
+    <h2>[ ] Alur Persetujuan MPR (simulasi)</h2>
+    <p style="font-size:13px;">MPR-001 — [ Backend Developer ] — 2 orang</p>
+    <div class="flow">
+      <div class="step">Diajukan</div><div class="arrow">→</div>
+      <div class="step" id="step-review">Review HRD</div><div class="arrow">→</div>
+      <div class="step" id="step-status">Pending</div>
+    </div>
+    <button class="btn" id="btn-approve-flow">Setujui MPR</button>
+    <button class="btn secondary" id="btn-reset-flow">Ulangi Simulasi</button>
+    <div id="draft-box" style="display:none;" class="draft">
+      <h3>[ ] Draf Lowongan (muncul setelah Approved)</h3>
+      <table>
+        <tr><th>Field</th><th>Isi (dummy)</th></tr>
+        <tr><td>Judul</td><td>[ Backend Developer ]</td></tr>
+        <tr><td>Jumlah Kebutuhan</td><td>2</td></tr>
+        <tr><td>Keywords</td><td>[ python ] [ fastapi ] [ postgres ]</td></tr>
+        <tr><td>Status</td><td>Draf — siap dipublikasi</td></tr>
+      </table>
+      <p class="note">Wireframe: draf hanya perubahan tampilan, tanpa penyimpanan.</p>
+    </div>
+  </div>
+</section>
+
+<script>
+// Navigasi tab — murni DOM, tanpa request server.
+(function () {
+  var btns = document.querySelectorAll("nav button");
+  var pages = document.querySelectorAll(".page");
+  function show(id) {
+    for (var i = 0; i < pages.length; i++) pages[i].classList.remove("active");
+    for (var j = 0; j < btns.length; j++) btns[j].classList.remove("active");
+    document.getElementById(id).classList.add("active");
+    var b = document.querySelector('nav button[data-page="' + id + '"]');
+    if (b) b.classList.add("active");
+  }
+  for (var k = 0; k < btns.length; k++) {
+    btns[k].addEventListener("click", function () { show(this.getAttribute("data-page")); });
+  }
+  window.__showPage = show;
+
+  // 1. Login dummy
+  document.getElementById("btn-login").addEventListener("click", function () {
+    document.getElementById("login-msg").innerHTML =
+      '<div class="success">Simulasi: login diterima (dummy). Lanjut ke tab Dashboard Supervisor.</div>';
+    setTimeout(function () { show("p-supervisor"); }, 600);
+  });
+
+  // 3. Tag keywords MPR
+  var tags = ["python", "fastapi"];
+  function renderTags() {
+    var box = document.getElementById("kw-tags");
+    box.innerHTML = "";
+    tags.forEach(function (t, idx) {
+      var s = document.createElement("span");
+      s.className = "tag";
+      s.textContent = "[ " + t + " ] ";
+      var x = document.createElement("button");
+      x.textContent = "x";
+      x.setAttribute("aria-label", "hapus " + t);
+      x.addEventListener("click", function () { tags.splice(idx, 1); renderTags(); });
+      s.appendChild(x);
+      box.appendChild(s);
+    });
+  }
+  renderTags();
+  document.getElementById("btn-kw-add").addEventListener("click", function () {
+    var inp = document.getElementById("mpr-kw-input");
+    var v = (inp.value || "").trim();
+    if (v) { tags.push(v); inp.value = ""; renderTags(); }
+  });
+
+  // 3. Ajukan MPR dummy
+  document.getElementById("btn-mpr-ajukan").addEventListener("click", function () {
+    var pos = (document.getElementById("mpr-posisi").value || "").trim();
+    var jum = (document.getElementById("mpr-jumlah").value || "").trim();
+    var msg = document.getElementById("mpr-msg");
+    if (!pos || !jum) {
+      msg.innerHTML = '<div class="success">Data tidak boleh kosong (simulasi validasi).</div>';
+      return;
+    }
+    if (isNaN(Number(jum))) {
+      msg.innerHTML = '<div class="success">Jumlah kebutuhan harus berupa angka (simulasi validasi).</div>';
+      return;
+    }
+    msg.innerHTML = '<div class="success">Simulasi: MPR "' + pos.replace(/</g, "&lt;") +
+      '" (' + jum + ' orang, ' + tags.length + ' keywords) dicatat di layar saja.</div>';
+  });
+
+  // 4. Setujui / Tolak di dashboard HRD (DOM only)
+  function bindDecision(attr, text) {
+    var els = document.querySelectorAll("[" + attr + "]");
+    for (var i = 0; i < els.length; i++) {
+      els[i].addEventListener("click", function () {
+        var id = this.getAttribute(attr);
+        document.getElementById(id).textContent = text;
+      });
+    }
+  }
+  bindDecision("data-approve", "Approved");
+  bindDecision("data-reject", "Rejected");
+
+  // 5. Alur persetujuan -> draf lowongan
+  document.getElementById("btn-approve-flow").addEventListener("click", function () {
+    var st = document.getElementById("step-status");
+    st.textContent = "Approved";
+    st.classList.add("done");
+    document.getElementById("step-review").classList.add("done");
+    document.getElementById("draft-box").style.display = "block";
+  });
+  document.getElementById("btn-reset-flow").addEventListener("click", function () {
+    var st = document.getElementById("step-status");
+    st.textContent = "Pending";
+    st.classList.remove("done");
+    document.getElementById("step-review").classList.remove("done");
+    document.getElementById("draft-box").style.display = "none";
+  });
+})();
+</script>
+</body>
+</html>
